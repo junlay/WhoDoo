@@ -1,0 +1,81 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.whodoo.Fragments.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="150dp"
+            android:layout_height="89dp"
+            android:layout_marginBottom="230dp"
+            android:layout_marginTop="79dp"
+            android:src="@drawable/whodo"
+            app:layout_constraintBottom_toTopOf="@+id/loginButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="77dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="111dp"
+            android:background="@drawable/login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            android:layout_marginLeft="69dp" />
+
+
+        <EditText
+            android:id="@+id/username_field"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_username"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="170dp"
+            android:hint="Username"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="72dp" />
+
+
+        <EditText
+            android:id="@+id/password_field"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_password"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="20dp"
+            android:hint="password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username_field"
+            android:layout_marginLeft="72dp" />
+
+        <Button
+            android:id="@+id/backButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="72dp"
+            android:layout_height="61dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@android:drawable/ic_delete"
+            android:text="Back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
