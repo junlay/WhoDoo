@@ -3,6 +3,7 @@ package com.example.whodoo.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.whodoo.DB.DatabaseSQLite;
 import com.example.whodoo.R;
 
 /**
@@ -54,7 +56,24 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "login clicked", Toast.LENGTH_SHORT).show();
+                if (username_field.getText().length() > 0 && password_field.getText().length() > 0) {
+                    if (DatabaseSQLite.getInstance(context).checkUser(context, username_field.getText().toString()
+                            , password_field.getText().toString()) == true) {
+                        SharedPreferences sharedPref = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("username", username_field.getText().toString());
+                        editor.putString("password", password_field.getText().toString());
+                        editor.commit();
+
+                        fragmentTransaction.replace(R.id.fragment, new HomeFragment()).commit();
+
+                    }else {
+
+                    }
+
+                }else {
+                    Toast.makeText(getContext(), "One or both fields are empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

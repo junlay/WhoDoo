@@ -37,8 +37,7 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
         db.execSQL("create table projects(project_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, deadline TEXT, username TEXT," +
                 "FOREIGN KEY (username) REFERENCES users (username))");
 
-        db.execSQL("create table users (username TEXT PRIMARY KEY, password TEXT, project_id INTEGER," +
-                "FOREIGN KEY (project_id) REFERENCES projects (project_id)) ");
+        db.execSQL("create table users (username TEXT PRIMARY KEY, password TEXT, project_id INTEGER) ");
 
         db.execSQL("create table tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, " +
                 "username TEXT, project_id INTEGER, FOREIGN KEY (username) REFERENCES users (username), FOREIGN KEY (project_id) REFERENCES projects (project_id))");

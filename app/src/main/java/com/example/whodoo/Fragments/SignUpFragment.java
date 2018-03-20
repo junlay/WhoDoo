@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.whodoo.DB.DatabaseSQLite;
 import com.example.whodoo.R;
 
 /**
@@ -50,7 +51,8 @@ public class SignUpFragment extends Fragment {
         createAccountbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DatabaseSQLite.getInstance(context).addUsername(context,field1.getText().toString(),field2.getText().toString());
+                fragmentTransaction.replace(R.id.fragment,new LoginFragment()).commit();
             }
         });
 
