@@ -12,74 +12,75 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/titleField"
+        <Button
+            android:id="@+id/addMemberBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:text="Add user"
+            app:layout_constraintStart_toEndOf="@+id/descriptionText"
+            app:layout_constraintTop_toBottomOf="@+id/listView"
+            android:layout_marginLeft="5dp" />
+
+        <Button
+            android:id="@+id/createProjectBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Create Project"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <EditText
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Title"
             android:inputType="textPersonName"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/descriptionField"
+            android:id="@+id/descriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:ems="10"
-            android:hint="description"
+            android:hint="Description"
             android:inputType="textPersonName"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleField" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
         <EditText
-            android:id="@+id/memberField"
+            android:id="@+id/addUserText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:ems="10"
-            android:hint="member to add"
+            android:hint="User to add"
             android:inputType="textPersonName"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionField" />
-
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
 
         <ListView
-            android:layout_width="185dp"
-            android:layout_height="222dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/listView"
+            android:layout_width="188dp"
+            android:layout_height="77dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/createProjetbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <DatePicker
+            android:id="@+id/datePicker2"
+            android:layout_width="312dp"
+            android:layout_height="326dp"
             android:layout_marginLeft="16dp"
-            android:text="Create project"
+            android:layout_marginTop="21dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            tools:layout_editor_absoluteY="190dp" />
-
-        <Button
-            android:id="@+id/addMemberbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="11dp"
-            android:text="ADD"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/memberField" />
-
+            app:layout_constraintTop_toBottomOf="@+id/addUserText" />
     </android.support.constraint.ConstraintLayout>
+
 </FrameLayout>

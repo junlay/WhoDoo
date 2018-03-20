@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by Junnan on 2018-03-19.
  */
@@ -194,6 +196,15 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
         }
 
         return title;
+    }
+
+    public Cursor getProject(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select title from projects where username = '" + username+"'";
+        Cursor data = db.rawQuery(query,null);
+
+        return data;
+
     }
 
 
