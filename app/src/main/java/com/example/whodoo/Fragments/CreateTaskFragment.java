@@ -3,9 +3,13 @@ package com.example.whodoo.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.whodoo.R;
 
@@ -13,7 +17,9 @@ import com.example.whodoo.R;
  * A simple {@link Fragment} subclass.
  */
 public class CreateTaskFragment extends Fragment {
-
+    Button backbutton,createButton;
+    View parentholder;
+    EditText titleText, desciptionText, timeText;
 
     public CreateTaskFragment() {
         // Required empty public constructor
@@ -24,7 +30,33 @@ public class CreateTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_task, container, false);
+        parentholder=inflater.inflate(R.layout.fragment_create_task, container, false);
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        backbutton = parentholder.findViewById(R.id.backButton);
+        createButton = parentholder.findViewById(R.id.distributeTask);
+        titleText = parentholder.findViewById(R.id.taskTitleText);
+        desciptionText = parentholder.findViewById(R.id.taskDescription);
+        timeText = parentholder.findViewById(R.id.taskTime);
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction.replace(R.id.fragment,new HomeFragment()).commit();
+            }
+        });
+
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (titleText.getText().toString().isEmpty()|| desciptionText.getText().toString().isEmpty()|| timeText.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Please fill in all the fields", Toast.LENGTH_SHORT).show();
+                }else {
+
+                }
+
+            }
+        });
+        return parentholder;
     }
 
 }

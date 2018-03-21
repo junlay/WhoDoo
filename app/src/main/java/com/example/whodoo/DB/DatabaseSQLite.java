@@ -46,7 +46,7 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
 
     }
-    /*
+
     public void addTask(Task task, int id){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -60,7 +60,7 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
         db.insert("tasks",null,cv);
 
     }
-    */
+
     public boolean checkUser(Context context, String email, String password) {
 
         // array of columns to fetch
