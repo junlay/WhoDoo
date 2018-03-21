@@ -36,28 +36,40 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table projects(project_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, deadline TEXT, username TEXT," +
-                "FOREIGN KEY (username) REFERENCES users (username))");
+        db.execSQL("create table projects(project_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, deadline TEXT)");
 
-        db.execSQL("create table users (username TEXT PRIMARY KEY, password TEXT, project_id INTEGER) ");
+        db.execSQL("create table users (username TEXT PRIMARY KEY, password TEXT) ");
 
-        db.execSQL("create table tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, " +
-                "username TEXT, project_id INTEGER, FOREIGN KEY (username) REFERENCES users (username), FOREIGN KEY (project_id) REFERENCES projects (project_id))");
+        db.execSQL("create table tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, deadline TEXT, " +
+                "project_id INTEGER, FOREIGN KEY (project_id) REFERENCES projects (project_id))");
 
+        db.execSQL("create table projects_has_users (projects_project_id INTEGER, users_username TEXT, FOREIGN KEY (projects_project_id) REFERENCES projects (project_id), " +
+                "FOREIGN KEY (users_username) REFERENCES users (username), PRIMARY KEY (projects_project_id, users_username))");
+
+        db.execSQL("create table users_has_tasks (tasks_task_id INTEGER , users_username TEXT, " +
+                "FOREIGN KEY (tasks_task_id) REFERENCES tasks(task_id), FOREIGN KEY (users_username) REFERENCES users (username), " +
+                " PRIMARY KEY (tasks_task_id , users_username))");
 
     }
 
-    public void addTask(Task task, int id){
+    public void addTask(Context context, Task task){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
-        cv.put("id",id);
         cv.put("title",task.getTitle());
         cv.put("description",task.getDescription());
         cv.put("deadline",task.getDeadline());
 
-        db.insert("tasks",null,cv);
+        long res = db.insert("tasks",null,cv);
+
+        if (res == -1){
+            Toast.makeText(context,"Upload failed!",Toast.LENGTH_LONG).show();
+        }
+        else
+            Toast.makeText(context, "Upload succeded!", Toast.LENGTH_LONG).show();
+
+        db.close();
 
     }
 
@@ -137,14 +149,14 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
         return false;
     }
 
-    public void addProject(Context context, String title, String description, String username){
+    public void addProject(Context context, String title, String description, String deadline){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
         cv.put("title",title);
         cv.put("description",description);
-        cv.put("username",username);
+        cv.put("deadline",deadline);
 
 
         long res = db.insert("projects",null,cv);
@@ -200,11 +212,39 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
     public Cursor getProject(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "Select title from projects where username = '" + username+"'";
+        String query = "Select title from projects inner join projects_has_users on project_id = project_id where users_username = '" + username+"'" ;
         Cursor data = db.rawQuery(query,null);
 
         return data;
 
+    }
+
+    public Cursor getProjectID(String title,String description,String deadline) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select project_id from projects where title = '" + title+"' and description = '" + description +"' and deadline = '" +deadline+"'" ;
+        Cursor data = db.rawQuery(query,null);
+
+        return data;
+
+    }
+
+    public void addProjectUsers(Context context, String id, String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("projects_project_id",id);
+        cv.put("users_username",username);
+
+        long res = db.insert("projects_has_users",null,cv);
+
+        if (res == -1){
+            Toast.makeText(context,"Upload failed!",Toast.LENGTH_LONG).show();
+        }
+        else
+            Toast.makeText(context, "Upload succeded!", Toast.LENGTH_LONG).show();
+
+        db.close();
     }
 
 

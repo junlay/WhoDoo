@@ -86,9 +86,11 @@
             android:id="@+id/addTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="31dp"
+            android:layout_marginStart="47dp"
             android:text="Button"
-            tools:layout_editor_absoluteX="293dp"
-            tools:layout_editor_absoluteY="204dp" />
+            app:layout_constraintBottom_toTopOf="@+id/taskListView"
+            app:layout_constraintStart_toEndOf="@+id/taskDescription" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

@@ -3,6 +3,7 @@ package com.example.whodoo.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ public class CreateProjectFragment extends Fragment {
     ListView listView;
     List<String> usernames;
     DatePicker datePicker;
-
+    int day, month , year;
     public CreateProjectFragment() {
         // Required empty public constructor
     }
@@ -60,10 +61,20 @@ public class CreateProjectFragment extends Fragment {
         createproj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (titleText.getText().toString().isEmpty() || descriptionText.toString().isEmpty() || usernames.isEmpty()) {
+                if (titleText.getText().toString().isEmpty() || descriptionText.toString().isEmpty() || usernames.isEmpty() ) {
                     Toast.makeText(getContext(), "Insufficent information", Toast.LENGTH_SHORT).show();
                 }else {
-                    DatabaseSQLite.getInstance(getContext()).addProject(getContext(),titleText.getText().toString(),descriptionText.getText().toString(),text_for_display);
+                    year = datePicker.getYear();
+                    month = datePicker.getMonth();
+                    day = datePicker.getDayOfMonth();
+
+                    String date = year +"-"+ month+"-"+day;
+                    DatabaseSQLite.getInstance(getContext()).addProject(getContext(),titleText.getText().toString(),descriptionText.getText().toString(),date);
+                    Cursor data = DatabaseSQLite.getInstance(getContext()).getProjectID(titleText.getText().toString(),descriptionText.getText().toString(),date);
+                    System.out.println(data.toString());
+                    for (int i=0; i<usernames.size();i++) {
+                        DatabaseSQLite.getInstance(getContext()).addProjectUsers(getContext(),data.toString(),usernames.get(i));
+                    }
                 }
             }
         });
