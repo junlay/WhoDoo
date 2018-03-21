@@ -10,7 +10,7 @@ import com.example.whodoo.Fragments.SplashScreenFragment;
 public class MainActivity extends AppCompatActivity {
 
 
-    //test commit
+    //testing to commit bram
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
