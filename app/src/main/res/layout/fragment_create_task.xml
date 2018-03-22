@@ -6,92 +6,76 @@
     android:layout_height="match_parent"
     android:background="@drawable/createtask"
     tools:context="com.example.whodoo.Fragments.CreateTaskFragment"
-    tools:layout_editor_absoluteY="25dp">
+    tools:layout_editor_absoluteY="89dp">
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/taskTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginStart="16dp"
         android:background="@drawable/addtask"
         android:hint="task"
         android:textColorHint="#50E3C2"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
-        app:layout_constraintEnd_toStartOf="@+id/editText12"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginRight="99dp"
-        android:layout_marginLeft="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="77dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editText12"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="34dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/taskTime"
+        android:layout_width="402dp"
+        android:layout_height="1dp"
         android:background="@drawable/addtask"
         android:hint="time"
         android:textColorHint="#50E3C2"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText11"
-        app:layout_constraintTop_toBottomOf="@+id/backButton"
-        android:layout_marginRight="16dp" />
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="117dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editText7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="29dp"
+        android:id="@+id/taskDescription"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
         android:background="@drawable/description"
         android:ems="10"
         android:hint="Description"
         android:inputType="textPersonName"
         android:textColorHint="#50E3C2"
-        app:layout_constraintBottom_toTopOf="@+id/listView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText12" />
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="406dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/createTaskbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/distributeTask"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:background="@drawable/distributetasks"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView2" />
+        tools:layout_editor_absoluteX="226dp"
+        tools:layout_editor_absoluteY="660dp"
+        tools:ignore="MissingConstraints" />
 
     <ListView
         android:id="@+id/listView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="21dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginStart="26dp"
+        android:layout_width="601dp"
+        android:layout_height="1dp"
         android:background="@android:color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/createTaskbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="351dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/backButton"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="38dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="53dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="1dp"
         android:background="@android:drawable/ic_delete"
         android:text="Back"
-        app:layout_constraintBottom_toTopOf="@+id/editText12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/addTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add task"/>
 
 
 </android.support.constraint.ConstraintLayout>
