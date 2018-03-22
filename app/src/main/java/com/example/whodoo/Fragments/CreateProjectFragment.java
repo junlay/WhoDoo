@@ -71,9 +71,12 @@ public class CreateProjectFragment extends Fragment {
                     String date = year +"-"+ month+"-"+day;
                     DatabaseSQLite.getInstance(getContext()).addProject(getContext(),titleText.getText().toString(),descriptionText.getText().toString(),date);
                     Cursor data = DatabaseSQLite.getInstance(getContext()).getProjectID(titleText.getText().toString(),descriptionText.getText().toString(),date);
-                    System.out.println(data.toString());
+                    int id = 0;
+                    while(data.moveToNext()) {
+                        id = data.getInt(0);
+                    }
                     for (int i=0; i<usernames.size();i++) {
-                        DatabaseSQLite.getInstance(getContext()).addProjectUsers(getContext(),data.toString(),usernames.get(i));
+                        DatabaseSQLite.getInstance(getContext()).addProjectUsers(getContext(),id,usernames.get(i));
                     }
                 }
             }

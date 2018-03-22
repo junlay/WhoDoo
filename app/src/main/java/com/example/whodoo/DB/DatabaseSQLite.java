@@ -212,7 +212,7 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
     public Cursor getProject(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "Select title from projects inner join projects_has_users on project_id = project_id where users_username = '" + username+"'" ;
+        String query = "Select title from projects inner join projects_has_users on projects.project_id = projects_has_users.projects_project_id where users_username = '"+username+"'";
         Cursor data = db.rawQuery(query,null);
 
         return data;
@@ -228,7 +228,7 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
     }
 
-    public void addProjectUsers(Context context, String id, String username) {
+    public void addProjectUsers(Context context, int id, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
