@@ -1,15 +1,19 @@
 package com.example.whodoo.Fragments;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +25,7 @@ import com.example.whodoo.DB.Task;
 import com.example.whodoo.R;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +58,28 @@ public class CreateTaskFragment extends Fragment {
         listView = parentholder.findViewById(R.id.listViewTask);
         SharedPreferences prefs = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
         final String text_for_display = prefs.getString("username",null);
-        ArrayList<String> taskTitles = new ArrayList<>();
+        final ArrayList<String> taskTitles = new ArrayList<>();
+        final ArrayList<String> usernames = new ArrayList<>();
+
+        Bundle bundle = getArguments();
+        String title = bundle.get("project_Title").toString();
+        Cursor data = DatabaseSQLite.getInstance(getContext()).getProjectID(title,text_for_display);
+        int id = 0;
+        while(data.moveToNext()) {
+            id = data.getInt(0);
+        }
+
+        final Cursor taskTitle = DatabaseSQLite.getInstance(getContext()).getTaskTitle(id);
+        while (taskTitle.moveToNext()) {
+            taskTitles.add(taskTitle.getString(0));
+        }
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                (getContext(), android.R.layout.simple_list_item_1, taskTitles);
+
+        listView.setAdapter(arrayAdapter);
+
+
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,28 +105,39 @@ public class CreateTaskFragment extends Fragment {
                     Task task = new Task(titleText.getText().toString(), desciptionText.getText().toString(), timeText.getText().toString());
                     DatabaseSQLite.getInstance(getContext()).addTask(getContext(), task,id);
 
+                    taskTitles.add(task.getTitle());
+                    arrayAdapter.notifyDataSetChanged();
 
                 }
 
             }
         });
-        Bundle bundle = getArguments();
-        String title = bundle.get("project_Title").toString();
-        Cursor data = DatabaseSQLite.getInstance(getContext()).getProjectID(title,text_for_display);
-        int id = 0;
-        while(data.moveToNext()) {
-            id = data.getInt(0);
-        }
 
-        Cursor taskTitle = DatabaseSQLite.getInstance(getContext()).getTaskTitle(id);
-        while (taskTitle.moveToNext()) {
-            taskTitles.add(taskTitle.getString(0));
-        }
+        distrubuteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = getArguments();
+                String title = bundle.get("project_Title").toString();
+                Cursor data = DatabaseSQLite.getInstance(getContext()).getProjectID(title,text_for_display);
+                int id = 0;
+                while(data.moveToNext()) {
+                    id = data.getInt(0);
+                }
+                Cursor users = DatabaseSQLite.getInstance(getContext()).getUser(id);
+                while (users.moveToNext()) {
+                    usernames.add(users.getString(0));
+                }
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (getContext(), android.R.layout.simple_list_item_1, taskTitles);
+                for (int i = 0; i<taskTitles.size();i++ ) {
+                    Random random = new Random();
+                    int number = random.nextInt(usernames.size());
+                    int taskID = DatabaseSQLite.getInstance(getContext()).getTaskID(taskTitles.get(i),id);
+                    DatabaseSQLite.getInstance(getContext()).addTaskUsers(getContext(),taskID,usernames.get(number));
 
-        listView.setAdapter(arrayAdapter);
+                }
+            }
+        });
+
         return parentholder;
     }
 

@@ -1,9 +1,13 @@
 package com.example.whodoo.Fragments;
 
 
+import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -18,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.whodoo.DB.DatabaseSQLite;
+import com.example.whodoo.MainActivity;
 import com.example.whodoo.R;
 
 import java.util.ArrayList;
@@ -116,6 +121,7 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
 
         return parentHolder;
     }

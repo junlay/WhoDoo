@@ -246,6 +246,8 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + "users");
         db.execSQL("DROP TABLE IF EXISTS " + "projects");
         db.execSQL("DROP TABLE IF EXISTS " + "tasks");
+        db.execSQL("DROP TABLE IF EXISTS " + "projects_has_users");
+        db.execSQL("DROP TABLE IF EXISTS " + "users_has_tasks");
 
 
         // Create tables again
@@ -260,4 +262,48 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
         return data;
     }
+
+    public Cursor getUser(int projectID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "select users_username from projects_has_users where projects_project_id =" + projectID;
+        Cursor data = db.rawQuery(query,null);
+
+        return data;
+    }
+
+    public int getTaskID (String title, int projectID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "select id from tasks where title = '" +title+ "' and project_id = " + projectID;
+        Cursor data = db.rawQuery(query,null);
+        int id = 0;
+
+        while (data.moveToNext()) {
+            id = data.getInt(0);
+        }
+
+        return  id;
+
+    }
+
+    public void addTaskUsers(Context context, int taskID, String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("tasks_task_id",taskID);
+        cv.put("users_username",username);
+
+
+        long res = db.insert("users_has_tasks",null,cv);
+
+        if (res == -1){
+            Toast.makeText(context,"Upload failed!",Toast.LENGTH_LONG).show();
+        }
+        else
+            Toast.makeText(context, "Upload succeded!", Toast.LENGTH_LONG).show();
+
+        db.close();
+
+    }
+
 }
