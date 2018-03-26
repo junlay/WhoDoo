@@ -19,7 +19,7 @@ import com.example.whodoo.R;
  * A simple {@link Fragment} subclass.
  */
 public class CreateTaskFragment extends Fragment {
-    Button backbutton,createButton,distrubuteButton;
+    Button backbutton,createButton,distrubuteButton, deleteButtom;
     View parentholder;
     EditText titleText, desciptionText, timeText;
 
@@ -40,6 +40,7 @@ public class CreateTaskFragment extends Fragment {
         desciptionText = parentholder.findViewById(R.id.taskDescription);
         timeText = parentholder.findViewById(R.id.taskTime);
         distrubuteButton = parentholder.findViewById(R.id.distributeTask);
+        deleteButtom = parentholder.findViewById(R.id.deleteButtom);
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override

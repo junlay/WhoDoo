@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.whodoo.Fragments.HomeFragment;
 import com.example.whodoo.Fragments.SplashScreenFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,4 +36,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

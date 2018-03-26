@@ -1,15 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.whodoo.Fragments.HomeFragment"
-    android:background="@drawable/backgroundhome">
+    android:background="@drawable/backgroundhome"
+    tools:context="com.example.whodoo.Fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageView3"
@@ -24,54 +21,100 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/homeLeftButton"
-            android:layout_width="66dp"
-            android:layout_height="74dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:background="@drawable/settingsbutton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
 
         <Button
-            android:id="@+id/homeRightButton"
-            android:layout_width="67dp"
-            android:layout_height="71dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/addbuttom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <Button
-            android:id="@+id/logoutButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="151dp"
+            android:id="@+id/projectCreate"
+            android:layout_width="145dp"
             android:layout_height="51dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginLeft="44dp"
             android:background="@android:color/holo_green_light"
-            android:text="Log Out"
+            android:text="Create Project"
             android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="145dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Log Out"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/viewTask"
+        app:layout_constraintEnd_toEndOf="parent" />
 
         <ListView
             android:id="@+id/projectListView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="98dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@android:color/background_light"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="300dp"
+            android:layout_height="350dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginLeft="23dp"
+            android:background="@android:color/holo_green_light"
+            android:text="Create"
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/addTaskbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:background="@android:color/holo_green_light"
+            android:drawableLeft="@drawable/addproject"
+            android:text="add task"
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/viewTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:background="@android:color/holo_green_light"
+        android:drawableLeft="@drawable/addproject"
+        android:text="View task"
+        android:textColor="#ffffff"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addTaskbtn" />
+
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="23dp"
+        android:background="@android:color/holo_green_light"
+        android:drawableLeft="@drawable/delete"
+        android:text="Delete"
+        android:textColor="#ffffff"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewTask" />
 
     </android.support.constraint.ConstraintLayout>
 
-</FrameLayout>
+

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundlogin"
     tools:context="com.example.whodoo.Fragments.LoginFragment">
 
 
@@ -13,7 +12,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#123123">
+        android:background="@drawable/nybackground">
 
 
         <ImageView
@@ -34,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="77dp"
             android:layout_marginStart="69dp"
+            android:layout_marginLeft="69dp"
             android:layout_marginTop="111dp"
             android:background="@drawable/login"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -46,8 +46,10 @@
             android:layout_width="240dp"
             android:layout_height="40dp"
             android:layout_marginStart="72dp"
+            android:layout_marginLeft="72dp"
             android:layout_marginTop="170dp"
-            android:background="@drawable/username"
+            android:background="@drawable/roundedbtn"
+            android:drawableLeft="@drawable/usernameicon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,8 +59,10 @@
             android:layout_width="240dp"
             android:layout_height="40dp"
             android:layout_marginStart="72dp"
+            android:layout_marginLeft="72dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/password"
+            android:background="@drawable/roundedbtn"
+            android:drawableLeft="@drawable/lockcreate"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username_field" />
@@ -68,10 +72,9 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="72dp"
             android:layout_height="61dp"
-            android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
-            android:background="@android:drawable/ic_delete"
-            android:text="Back"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/backbuttom"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

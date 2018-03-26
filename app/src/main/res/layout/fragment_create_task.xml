@@ -4,78 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/createtask"
+    android:background="@drawable/nybackground"
     tools:context="com.example.whodoo.Fragments.CreateTaskFragment"
     tools:layout_editor_absoluteY="89dp">
 
     <EditText
         android:id="@+id/taskTitleText"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/addtask"
-        android:hint="task"
-        android:textColorHint="#50E3C2"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="77dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#00796D"
+        android:hint="Task"
+        android:textColor="#fff"
+        android:textColorHint="#00796D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
-        android:id="@+id/taskTime"
-        android:layout_width="402dp"
-        android:layout_height="1dp"
-        android:background="@drawable/addtask"
-        android:hint="time"
-        android:textColorHint="#50E3C2"
-        tools:layout_editor_absoluteX="235dp"
-        tools:layout_editor_absoluteY="117dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
+        android:textColor="#fff"
         android:id="@+id/taskDescription"
-        android:layout_width="500dp"
-        android:layout_height="200dp"
-        android:background="@drawable/description"
-        android:ems="10"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#00796D"
         android:hint="Description"
-        android:inputType="textPersonName"
-        android:textColorHint="#50E3C2"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="406dp"
-        tools:ignore="MissingConstraints" />
+        android:textColorHint="#00796D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskTime" />
 
-    <Button
-        android:id="@+id/distributeTask"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:background="@drawable/distributetasks"
-        tools:layout_editor_absoluteX="226dp"
-        tools:layout_editor_absoluteY="660dp"
-        tools:ignore="MissingConstraints" />
-
-    <ListView
-        android:id="@+id/listView2"
-        android:layout_width="601dp"
-        android:layout_height="1dp"
-        android:background="@android:color/background_light"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="351dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/backButton"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="38dp"
-        android:layout_height="1dp"
-        android:background="@android:drawable/ic_delete"
-        android:text="Back"
-        tools:layout_editor_absoluteX="16dp"
-        tools:ignore="MissingConstraints" />
+    <EditText
+        android:textColor="#fff"
+        android:id="@+id/taskTime"
+        android:layout_width="130dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#00796D"
+        android:hint="Time"
+        android:textColorHint="#00796D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskTitleText" />
 
     <Button
         android:id="@+id/addTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add task"/>
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:layout_marginTop="168dp"
+        android:background="@drawable/addbuttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ListView
+        android:id="@+id/listViewTask"
+        android:layout_width="323dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTask">
+
+
+    </ListView>
+
+    <Button
+        android:id="@+id/deleteButtom"
+        android:layout_width="81dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/deletebuttom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/distributeTask"
+        android:layout_width="174dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="67dp"
+        android:background="@drawable/distributetasks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/deleteButtom" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="59dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/backbuttom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.whodoo.Fragments.SignUpFragment"
-    android:background="#123132">
+    android:background="@drawable/nybackground"
+    >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
             android:id="@+id/create_accountBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="64dp"
             android:layout_marginEnd="37dp"
             android:layout_marginStart="37dp"
             android:background="@drawable/createaccount"
@@ -32,6 +33,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginStart="39dp"
             android:layout_marginLeft="40dp"
+            android:drawableLeft="@drawable/usernameicon"
             android:background="@drawable/roundedbtn"
             app:layout_constraintBottom_toTopOf="@+id/field2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +47,7 @@
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
             android:background="@drawable/roundedbtn"
+            android:drawableLeft="@drawable/lockcreate"
             android:inputType="textVisiblePassword"
             app:layout_constraintBottom_toTopOf="@+id/create_accountBtn"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,8 +55,8 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="180dp"
-            android:layout_height="58dp"
+            android:layout_width="174dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="70dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="42dp"

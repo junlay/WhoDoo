@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public class CreateProjectFragment extends Fragment {
     EditText titleText,descriptionText,addUserText;
-    Button createproj, adduser;
+    Button createproj, adduser, backButton;
     View parentholder;
     ListView listView;
     List<String> usernames;
@@ -43,6 +44,7 @@ public class CreateProjectFragment extends Fragment {
                              Bundle savedInstanceState) {
         parentholder =inflater.inflate(R.layout.fragment_create_project, container, false);
         usernames = new ArrayList<>();
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
         SharedPreferences prefs = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
         final String text_for_display = prefs.getString("username",null);
@@ -57,6 +59,14 @@ public class CreateProjectFragment extends Fragment {
         adduser = parentholder.findViewById(R.id.addMemberBtn);
         listView = parentholder.findViewById(R.id.listView);
         datePicker = parentholder.findViewById(R.id.datePicker2);
+        backButton = parentholder.findViewById(R.id.backBtn);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction.replace(R.id.fragment, new HomeFragment()).commit();
+            }
+        });
 
         createproj.setOnClickListener(new View.OnClickListener() {
             @Override

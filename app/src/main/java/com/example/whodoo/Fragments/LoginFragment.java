@@ -65,6 +65,7 @@ public class LoginFragment extends Fragment {
                         editor.putString("password", password_field.getText().toString());
                         editor.commit();
 
+
                         fragmentTransaction.replace(R.id.fragment, new HomeFragment()).commit();
 
                     }else {

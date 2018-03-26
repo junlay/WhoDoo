@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
-    Button logoutButton, leftButton, rightButton;
+    Button logoutButton, createProject, rightButton, addTaskbtn, viewTask, deleteBtn;
     View parentHolder;
     ListView projectListview;
 
@@ -48,9 +48,30 @@ public class HomeFragment extends Fragment {
 
 
         logoutButton = (Button) parentHolder.findViewById(R.id.logoutButton);
-        leftButton = (Button) parentHolder.findViewById(R.id.homeLeftButton);
-        rightButton = (Button) parentHolder.findViewById(R.id.homeRightButton);
+        createProject = (Button) parentHolder.findViewById(R.id.projectCreate);
+        //rightButton = (Button) parentHolder.findViewById(R.id.homeRightButton);
         projectListview = (ListView) parentHolder.findViewById(R.id.projectListView);
+        addTaskbtn = (Button) parentHolder.findViewById(R.id.addTaskbtn);
+        viewTask = (Button) parentHolder.findViewById(R.id.viewTask);
+        deleteBtn = (Button) parentHolder.findViewById(R.id.deleteBtn);
+
+
+        viewTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction.replace(R.id.fragment,new ViewTaskFragment()).commit();
+            }
+        });
+
+
+        addTaskbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction.replace(R.id.fragment,new CreateTaskFragment()).commit();
+            }
+        });
+
+
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,17 +84,19 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        rightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragmentTransaction.replace(R.id.fragment,new CreateProjectFragment()).commit();
-            }
-        });
+        //rightButton.setOnClickListener(new View.OnClickListener() {
+           // @Override
+            //public void onClick(View view) {
+                //fragmentTransaction.replace(R.id.fragment,new CreateProjectFragment()).commit();
+        // }
+        //});
 
-        leftButton.setOnClickListener(new View.OnClickListener() {
+
+
+        createProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentTransaction.replace(R.id.fragment,new CreateTaskFragment()).commit();
+               fragmentTransaction.replace(R.id.fragment,new CreateProjectFragment()).commit();
             }
         });
 
