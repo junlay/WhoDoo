@@ -53,7 +53,6 @@ public class HomeFragment extends Fragment {
         createProject = (Button) parentHolder.findViewById(R.id.projectCreate);
         //rightButton = (Button) parentHolder.findViewById(R.id.homeRightButton);
         projectListview = (ListView) parentHolder.findViewById(R.id.projectListView);
-        addTaskbtn = (Button) parentHolder.findViewById(R.id.addTaskbtn);
         viewTask = (Button) parentHolder.findViewById(R.id.viewTask);
         deleteBtn = (Button) parentHolder.findViewById(R.id.deleteBtn);
 
@@ -64,16 +63,6 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment,new ViewTaskFragment()).commit();
             }
         });
-
-
-        addTaskbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragmentTransaction.replace(R.id.fragment,new CreateTaskFragment()).commit();
-            }
-        });
-
-
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,16 +91,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        showProjects(text_for_display);
 
-
-
-        return parentHolder;
-    }
-
-    public void showProjects(String username) {
-        Cursor data = DatabaseSQLite.getInstance(getContext()).getProject(username);
-        ArrayList<String> projects = new ArrayList<>();
+        Cursor data = DatabaseSQLite.getInstance(getContext()).getProject(text_for_display);
+        final ArrayList<String> projects = new ArrayList<>();
         while (data.moveToNext()) {
             projects.add(data.getString(0));
         }
@@ -121,8 +103,24 @@ public class HomeFragment extends Fragment {
 
         projectListview.setAdapter(arrayAdapter);
 
+
+        projectListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("project_Title",projects.get(position));
+                CreateTaskFragment createTaskFragment = new CreateTaskFragment();
+                createTaskFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment,createTaskFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        return parentHolder;
     }
 
 
-
 }
+
+

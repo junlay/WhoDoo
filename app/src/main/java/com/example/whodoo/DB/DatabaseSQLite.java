@@ -52,7 +52,7 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
     }
 
-    public void addTask(Context context, Task task){
+    public void addTask(Context context, Task task, int projectID){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -60,6 +60,7 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
         cv.put("title",task.getTitle());
         cv.put("description",task.getDescription());
         cv.put("deadline",task.getDeadline());
+        cv.put("project_id",projectID);
 
         long res = db.insert("tasks",null,cv);
 
@@ -191,23 +192,13 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
     }
 
-    public String getTaskTitle(){
+    public Cursor getTaskTitle(int projectID){
         SQLiteDatabase db = getReadableDatabase();
-        String title = null;
 
-        String query = "Select title from tasks where id = 10000";
+        String query = "Select title from tasks where project_id = " + projectID;
         Cursor cursor = db.rawQuery(query, null);
 
-        if (cursor.moveToFirst()) {
-            do {
-
-                title = cursor.getString(0);
-
-
-            } while (cursor.moveToNext());
-        }
-
-        return title;
+        return cursor;
     }
 
     public Cursor getProject(String username) {
@@ -260,5 +251,13 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
 
+    }
+    public Cursor getProjectID(String title, String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select project_id from projects inner join projects_has_users on projects_has_users.projects_project_id = projects.project_id " +
+                "where users_username = '" +username+ "' and title = '"+ title +"'";
+        Cursor data = db.rawQuery(query,null);
+
+        return data;
     }
 }
