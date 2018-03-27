@@ -4,6 +4,7 @@ package com.example.whodoo.Fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.whodoo.DB.DatabaseSQLite;
@@ -50,8 +52,21 @@ public class CreateProjectFragment extends Fragment {
         final String text_for_display = prefs.getString("username",null);
         usernames.add(text_for_display);
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (getContext(), android.R.layout.simple_list_item_1, usernames);
+        final ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(
+                getActivity(), android.R.layout.simple_list_item_1, usernames){
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view =super.getView(position, convertView, parent);
+
+                TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+            /*YOUR CHOICE OF COLOR*/
+                textView.setTextColor(Color.WHITE);
+
+                return view;
+            }
+        };
         titleText = parentholder.findViewById(R.id.titleText);
         descriptionText = parentholder.findViewById(R.id.descriptionText);
         addUserText = parentholder.findViewById(R.id.addUserText);

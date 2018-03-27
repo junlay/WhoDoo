@@ -306,4 +306,13 @@ public class DatabaseSQLite extends SQLiteOpenHelper {
 
     }
 
+    public Cursor getTask(String username) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "select title,description,deadline from tasks inner join users_has_tasks on tasks.id = users_has_tasks.tasks_task_id where users_username = '" +username+"'";
+        Cursor data = db.rawQuery(query,null);
+        return data;
+
+    }
+
 }

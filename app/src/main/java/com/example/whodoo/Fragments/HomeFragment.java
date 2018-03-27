@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,7 +34,7 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
-    Button logoutButton, createProject, rightButton, addTaskbtn, viewTask, deleteBtn;
+    Button logoutButton, createProject, rightButton, messengerButton, viewTask, deleteBtn;
     View parentHolder;
     ListView projectListview;
 
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment {
 
         logoutButton = (Button) parentHolder.findViewById(R.id.logoutButton);
         createProject = (Button) parentHolder.findViewById(R.id.projectCreate);
-        //rightButton = (Button) parentHolder.findViewById(R.id.homeRightButton);
+        messengerButton = (Button) parentHolder.findViewById(R.id.messenger);
         projectListview = (ListView) parentHolder.findViewById(R.id.projectListView);
         viewTask = (Button) parentHolder.findViewById(R.id.viewTask);
         deleteBtn = (Button) parentHolder.findViewById(R.id.deleteBtn);
@@ -80,12 +81,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //rightButton.setOnClickListener(new View.OnClickListener() {
-           // @Override
-            //public void onClick(View view) {
+        messengerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 //fragmentTransaction.replace(R.id.fragment,new CreateProjectFragment()).commit();
-        // }
-        //});
+         }
+        });
 
 
 
@@ -103,8 +104,21 @@ public class HomeFragment extends Fragment {
             projects.add(data.getString(0));
         }
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (getContext(), android.R.layout.simple_list_item_1, projects);
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(
+                getActivity(), android.R.layout.simple_list_item_1, projects){
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view =super.getView(position, convertView, parent);
+
+                TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+            /*YOUR CHOICE OF COLOR*/
+                textView.setTextColor(Color.WHITE);
+
+                return view;
+            }
+        };
 
         projectListview.setAdapter(arrayAdapter);
 

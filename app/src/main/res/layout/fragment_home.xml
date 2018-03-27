@@ -57,10 +57,10 @@
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/viewTask"
-        app:layout_constraintStart_toEndOf="@+id/addTaskbtn" />
+        app:layout_constraintStart_toEndOf="@+id/messenger" />
 
     <Button
-        android:id="@+id/addTaskbtn"
+        android:id="@+id/messenger"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
