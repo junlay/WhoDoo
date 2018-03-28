@@ -9,9 +9,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by Junnan on 2018-03-19.
- */
 
 public class DatabaseSQLite extends SQLiteOpenHelper {
     private static DatabaseSQLite sInstance;

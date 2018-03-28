@@ -1,8 +1,5 @@
 package com.example.whodoo.DB;
 
-/**
- * Created by Junnan on 2018-03-19.
- */
 
 public class User {
 
