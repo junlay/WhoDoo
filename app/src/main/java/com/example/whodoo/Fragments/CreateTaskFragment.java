@@ -33,7 +33,7 @@ import java.util.Random;
  * A simple {@link Fragment} subclass.
  */
 public class CreateTaskFragment extends Fragment {
-    Button backbutton,createButton,distrubuteButton, deleteButtom;
+    Button backbutton,createButton,distrubuteButton;
     View parentholder;
     ListView listView;
     EditText titleText, desciptionText, timeText;
@@ -55,7 +55,7 @@ public class CreateTaskFragment extends Fragment {
         desciptionText = parentholder.findViewById(R.id.taskDescription);
         timeText = parentholder.findViewById(R.id.taskTime);
         distrubuteButton = parentholder.findViewById(R.id.distributeTask);
-        deleteButtom = parentholder.findViewById(R.id.deleteButtom);
+
 
         listView = parentholder.findViewById(R.id.listViewTask);
         SharedPreferences prefs = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -122,7 +122,9 @@ public class CreateTaskFragment extends Fragment {
 
                     taskTitles.add(task.getTitle());
                     arrayAdapter.notifyDataSetChanged();
-
+                    titleText.getText().clear();
+                    desciptionText.getText().clear();
+                    timeText.getText().clear();
                 }
 
             }

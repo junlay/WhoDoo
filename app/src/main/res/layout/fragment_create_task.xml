@@ -76,24 +76,14 @@
     </ListView>
 
     <Button
-        android:id="@+id/deleteButtom"
-        android:layout_width="81dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/deletebuttom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/distributeTask"
         android:layout_width="174dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="67dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/distributetasks"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/deleteButtom" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/backButton"

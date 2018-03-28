@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
-    Button logoutButton, createProject, rightButton, messengerButton, viewTask, deleteBtn;
+    Button logoutButton, createProject, rightButton, messengerButton, viewTask;
     View parentHolder;
     ListView projectListview;
 
@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
         messengerButton = (Button) parentHolder.findViewById(R.id.messenger);
         projectListview = (ListView) parentHolder.findViewById(R.id.projectListView);
         viewTask = (Button) parentHolder.findViewById(R.id.viewTask);
-        deleteBtn = (Button) parentHolder.findViewById(R.id.deleteBtn);
+
 
 
         viewTask.setOnClickListener(new View.OnClickListener() {

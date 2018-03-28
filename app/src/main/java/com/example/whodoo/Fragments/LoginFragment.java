@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
         referenceActivity = getActivity();
-        parentHolder = inflater.inflate(R.layout.fragment_login, container,
+        parentHolder = inflater.inflate(R.layout.fragment_log_in, container,
                 false);
 
         username_field = (EditText)parentHolder.findViewById(R.id.username_field);

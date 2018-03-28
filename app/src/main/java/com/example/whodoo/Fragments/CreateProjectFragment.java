@@ -103,6 +103,9 @@ public class CreateProjectFragment extends Fragment {
                     for (int i=0; i<usernames.size();i++) {
                         DatabaseSQLite.getInstance(getContext()).addProjectUsers(getContext(),id,usernames.get(i));
                     }
+
+                    titleText.getText().clear();
+                    descriptionText.getText().clear();
                 }
             }
         });
@@ -121,6 +124,8 @@ public class CreateProjectFragment extends Fragment {
                         listView.setAdapter(arrayAdapter);
                         Toast.makeText(getContext(), "User added", Toast.LENGTH_SHORT).show();
                     }
+
+                    addUserText.getText().clear();
 
                 }
             }
